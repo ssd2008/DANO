@@ -21,6 +21,7 @@ import os
 from ydata_profiling import ProfileReport
 from matplotlib import rcParams
 from matplotlib import font_manager as fm
+import matplotlib.patches as mpatches
 from matplotlib.colors import Normalize, TwoSlopeNorm, LinearSegmentedColormap
 import matplotlib as mpl
 from typing import List, Dict, Optional, Any
@@ -185,19 +186,26 @@ def norm_hist(
     bgcolor='#F5F5F5',
     title=None,
     figsize=(8, 5),
-    podpisi=True
+    podpisi=True,
+    outliers_min=None,
+    outliers_max=None,
+    outlier_color='#6a0dad',
+    outliers_text='Выбросы',
 ):
     """
-    Рисует красивую гистограмму для Series в стиле минимализма.
+    Рисует гистограмму для Series.
 
     series : pandas.Series — данные
     bins : int — количество корзин
-    color : str — цвет столбцов
+    color : str — цвет обычных столбцов
     edgecolor : str — цвет границ столбцов
     bgcolor : str — цвет фона
     title : str — заголовок
     figsize : tuple — размер графика
     podpisi : bool - делать ли подписи над столбцами
+    outliers_min : float — все корзины ≤ этого значения будут выделены
+    outliers_max : float — все корзины ≥ этого значения будут выделены
+    outlier_color : str — цвет аутлаеров
     """
     fig, ax = plt.subplots(figsize=figsize)
 
@@ -206,22 +214,36 @@ def norm_hist(
     ax.set_facecolor(bgcolor)
 
     # Строим гистограмму
-    counts, bin_edges, patches = ax.hist(series, bins=bins, color=color, edgecolor=edgecolor)
+    counts, bin_edges, patches = ax.hist(series, bins=bins, edgecolor=edgecolor)
 
-    if podpisi == True:
-        # Подписи значений над столбцами
-        for count, left, right in zip(counts, bin_edges[:-1], bin_edges[1:]):
-            if count > 0:
-                ax.annotate(f'{int(count)}',
-                            xy=((left + right) / 2, count),
-                            xytext=(0, 3),
-                            textcoords="offset points",
-                            ha='center', va='bottom',
-                            fontsize=10, color='black')
+    has_outliers = False  # флаг для проверки, есть ли выбросы
+
+    # Красим колонки
+    for count, left, right, patch in zip(counts, bin_edges[:-1], bin_edges[1:], patches):
+        if (outliers_max is not None and left >= outliers_max) or \
+           (outliers_min is not None and right <= outliers_min):
+            patch.set_facecolor(outlier_color)
+            has_outliers = True
+        else:
+            patch.set_facecolor(color)
+
+        # Подписи значений
+        if podpisi and count > 0:
+            ax.annotate(f'{int(count)}',
+                        xy=((left + right) / 2, count),
+                        xytext=(0, 3),
+                        textcoords="offset points",
+                        ha='center', va='bottom',
+                        fontsize=10, color='black')
 
     # Заголовок
     if title:
         ax.set_title(title, fontsize=14, fontweight='bold')
+
+    # Легенда (только если заданы пороги)
+    if (outliers_min is not None or outliers_max is not None) and has_outliers:
+        outlier_patch = mpatches.Patch(color=outlier_color, label=outliers_text)
+        ax.legend(handles=[outlier_patch], fontsize=10, frameon=False)
 
     # Минимализм
     ax.spines['top'].set_visible(False)
