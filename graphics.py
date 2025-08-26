@@ -178,6 +178,63 @@ def plot_bar_chart_with_success(
     plt.tight_layout()
     plt.show()
 
+def norm_pie(
+    series,
+    colors=None,
+    bgcolor="#F5F5F5",
+    title=None,
+    figsize=(7, 7),
+    label_fontsize=12
+):
+    """
+    Рисует красивую круговую диаграмму в стиле минимализма.
+
+    series : pandas.Series — данные (категориальные)
+    colors : list — список цветов для секторов (если None — берутся оттенки синего/фиолетового)
+    bgcolor : str — цвет фона
+    title : str — заголовок
+    figsize : tuple — размер графика
+    label_fontsize : int — размер шрифта для подписей
+    """
+    counts = series.value_counts()
+    labels = [f"{cat} ({cnt})" for cat, cnt in zip(counts.index, counts.values)]
+
+    # Дефолтная палитра (максимум 6 категорий)
+    if colors is None:
+        colors = ["#4A90E2", "#6A5ACD", "#7B68EE", "#9370DB", "#8A2BE2", "#6A0DAD"]
+
+    fig, ax = plt.subplots(figsize=figsize)
+
+    # Фон
+    fig.patch.set_facecolor(bgcolor)
+    ax.set_facecolor(bgcolor)
+
+    wedges, texts = ax.pie(
+        counts.values,
+        labels=labels,
+        colors=colors[:len(counts)],
+        startangle=90,
+        wedgeprops=dict(edgecolor="white", linewidth=2)
+    )
+
+    # Настроим подписи
+    for text in texts:
+        text.set_fontsize(label_fontsize)
+        text.set_color("black")
+        text.set_fontweight("bold")
+
+    # Заголовок
+    if title:
+        ax.set_title(title, fontsize=14, fontweight="bold")
+
+    # Минимализм
+    ax.set(aspect="equal")  # круг, а не овал
+    plt.tight_layout()
+    plt.show()
+
+
+
+
 def norm_hist(
     series,
     bins=10,
@@ -388,6 +445,83 @@ def plot_heatmap(
         plt.show()
 
     return fig, ax
+
+def norm_scatter(
+    x,
+    y,
+    c=None,
+    colors=None,
+    bgcolor="#F5F5F5",
+    title=None,
+    fontweight='regular',
+    figsize=(7, 5),
+    alpha=0.8,
+    size=50
+):
+    """
+    Рисует красивый scatter plot в минималистичном стиле.
+
+    x : array-like — координаты X
+    y : array-like — координаты Y
+    c : array-like (опц.) — категории для окраски точек
+    colors : list — список цветов (по умолчанию оттенки синего/фиолетового)
+    bgcolor : str — цвет фона
+    title : str — заголовок
+    figsize : tuple — размер графика
+    alpha : float — прозрачность точек
+    size : int — размер точек
+    """
+    fig, ax = plt.subplots(figsize=figsize)
+
+    # Фон
+    fig.patch.set_facecolor(bgcolor)
+    ax.set_facecolor(bgcolor)
+
+    # Палитра
+    if colors is None:
+        colors = ["#4A90E2", "#6A5ACD", "#7B68EE", "#9370DB", "#8A2BE2", "#6A0DAD"]
+
+    if c is None:
+        # без категорий — все одной краской
+        ax.scatter(x, y, s=size, alpha=alpha, color=colors[0], edgecolor="black", linewidth=0.5)
+    else:
+        categories = pd.Series(c).astype(str)
+        unique_cats = categories.unique()
+        for i, cat in enumerate(unique_cats):
+            mask = categories == cat
+            ax.scatter(
+                x[mask],
+                y[mask],
+                s=size,
+                alpha=alpha,
+                color=colors[i % len(colors)],
+                edgecolor="black",
+                linewidth=0.5,
+                label=f"{cat} ({mask.sum()})"
+            )
+        # Подписи вместо легенды
+        for i, cat in enumerate(unique_cats):
+            ax.text(
+                1.02, 0.95 - i*0.05,
+                f"{cat} ({(categories==cat).sum()})",
+                transform=ax.transAxes,
+                fontsize=11,
+                fontweight="bold",
+                color=colors[i % len(colors)],
+                ha="left", va="center"
+            )
+
+    # Заголовок
+    if title:
+        ax.set_title(title, fontsize=14, fontweight=fontweight)
+
+    # Минимализм
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+
+    plt.tight_layout()
+    plt.show()
+
 
 
 
