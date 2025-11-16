@@ -30,6 +30,11 @@ warnings.filterwarnings('ignore')
 
 import graphics
 
+def ztest(counts, nobs): # counts = кол-во успехов, nobs - размеры выборок (nobs >= counts)
+    from statsmodels.stats.proportion import proportions_ztest
+    z_stat, p_value = proportions_ztest(counts, nobs, alternative='two-sided')
+    print("z =", z_stat, "p-value =", p_value)
+    return z_stat, p_value
 
 def print_correlations(x, y):
     # Спирмен
@@ -42,7 +47,7 @@ def print_correlations(x, y):
 
 
 def normal_means(x):
-    if x.shape[0] > 30:
+    if x.shape[0] > 70:
         return True
     p_shapiro = shapiro(x)[-1]
     return p_shapiro > 0.05
@@ -55,32 +60,6 @@ def equal_var(*s):
     else:
         print('Дисперсии выборок НЕ равны')
     return p_levene
-
-def compare_mean(df, col1, col2):
-    s1 = df[col1]
-    s2 = df[col2]
-    p_normal_means_s1 = normal_means(s1)
-    p_normal_means_s12 = normal_means(s2)
-    p_equal_var = equal_var(s1, s2)
-    print('p_normal_means_s1:', p_normal_means_s1)
-    print('p_normal_means_s12:', p_normal_means_s12)
-    print('p_equal_var:', p_equal_var)
-    if p_normal_means_s1 > 0.05 and p_normal_means_s12 > 0.05:
-        if p_equal_var > 0.05:
-            print('Т-Критерий Стьюдента')
-            p_test = ttest_ind(s1, s2, equal_var=True)[-1]
-        else:
-            print('Т-Критерий Уэлча')
-            p_test = ttest_ind(s1, s2, equal_var=False)[-1]
-    else:
-        print('U-критерий Манна-Уитни')
-        p_test = mannwhitneyu(s1, s2)[-1]
-    print('p-value:', p_test)
-    if p_test <= 0.05:
-        print('Средние стат. значимо отличаются')
-    else:
-        print('Средние стат. значимо НЕ отличаются')
-
 
 
 def compare_mean(df, num_var, cat_var):
@@ -104,7 +83,7 @@ def compare_mean(df, num_var, cat_var):
                 posthoc = sp.posthoc_dunn(df, val_col=num_var, group_col=cat_var, p_adjust='bonferroni')
                 print(posthoc)
     else:
-        p_equal_var = equal_var(series_list)
+        p_equal_var = equal_var(*series_list)
         print("p_equal_var:", p_equal_var)
         if p_equal_var > 0.05:
             if groups_count == 2:
