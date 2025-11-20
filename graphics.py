@@ -32,13 +32,25 @@ plt.rcParams['figure.dpi'] = 300
 
 warnings.filterwarnings('ignore')
 
+
+def __info__():
+    text = ("В этой библиотеке:\n - Столбчатая диаграмма (plot_bar_chart)\n - линейную диаграмму (просто y от x, plot_line_chart)\n"
+            " - Столбчатая диаграмма с успешной частью (plot_bar_chart_with_success)\n - круговая диаграмма (norm_pie)\n"
+            " - Гисотграмма (может выделить выбросы; norm_hist)\n - Хитмапа (plot_heatmap)\n - Скаттерплот (norm_scatter)\n"
+            " - Матрица корреляций (mixed_corr_heatmaps)\n\n"
+            "Для подробной информации по каждой функе - func.__doc__")
+    print(text)
+
 def plot_bar_chart(x, y, title=None, color='#4A90E2', bgcolor='#F5F5F5', figsize=(8, 5)):
     """
     Рисует столбчатую диаграмму с подписями значений над столбцами.
 
+    Must-Have:
     x : list/array-like — подписи для оси X
     y : list/array-like — высоты столбцов
     title : str — заголовок графика
+
+    Лучше не трогай:
     color : str — цвет столбцов (hex или имя)
     bgcolor : str — цвет фона графика
     figsize : pair - figsize
@@ -73,17 +85,27 @@ def plot_bar_chart(x, y, title=None, color='#4A90E2', bgcolor='#F5F5F5', figsize
     plt.tight_layout()
     plt.show()
 
-def plot_line_chart(x, y, title=None, color='#4A90E2', bgcolor='#F5F5F5', figsize=(8, 5), marker='o'):
+def plot_line_chart(x, y, title=None, points_values=True, color='#4A90E2', bgcolor='#F5F5F5', figsize=(8, 5), marker='o'):
     """
-    Рисует линейную диаграмму с подписями значений в точках.
+    Рисует линейный график с подписями значений в каждой точке.
 
-    x : list/array-like — значения для оси X
-    y : list/array-like — значения для оси Y
-    title : str — заголовок графика
+    Must-Have:
+    x : list/array-like — координаты по оси X (одинаковая длина с y)
+    y : list/array-like — координаты по оси Y
+    title : str | None — заголовок (можно не задавать)
+
+    Если не нужны подписи над точками (значение y), то сделай:
+    points_values = False
+
+    Лучше не трогай:
     color : str — цвет линии (hex или имя)
-    bgcolor : str — цвет фона графика
-    figsize : tuple — размер графика (ширина, высота)
-    marker : str — маркер для точек линии
+    bgcolor : str — цвет фона области
+    figsize : tuple — размер графика
+    marker : str — маркер для точек
+
+    На вход должны идти последовательности одинаковой длины.
+    Если x несортирован — линия пойдёт именно в том порядке, в котором ты задал.
+    Подписи ставятся прямо над точками.
     """
     fig, ax = plt.subplots(figsize=figsize)
 
@@ -95,13 +117,14 @@ def plot_line_chart(x, y, title=None, color='#4A90E2', bgcolor='#F5F5F5', figsiz
     ax.plot(x, y, color=color, marker=marker, linewidth=2)
 
     # Подписи точек
-    for xi, yi in zip(x, y):
-        ax.annotate(f'{yi:.2f}',
-                    xy=(xi, yi),
-                    xytext=(0, 5),  # смещение текста
-                    textcoords="offset points",
-                    ha='center', va='bottom',
-                    fontsize=10, color='black')
+    if points_values:
+        for xi, yi in zip(x, y):
+            ax.annotate(f'{yi:.2f}',
+                        xy=(xi, yi),
+                        xytext=(0, 5),  # смещение текста
+                        textcoords="offset points",
+                        ha='center', va='bottom',
+                        fontsize=10, color='black')
 
     # Заголовок
     if title:
@@ -123,16 +146,28 @@ def plot_bar_chart_with_success(
     figsize=(8, 5)
 ):
     """
-    Рисует столбчатую диаграмму с успешной частью у основания.
+    Рисует составной столбчатый график: «успешная» часть у основания + остаток сверху.
+    Показывает процент успеха внутри каждого столбца и общее значение над ним.
 
+    Must-Have:
     x : list/array-like — подписи оси X
-    y : list/array-like — общие значения
-    success : list/array-like — значения успешных единиц (<= y)
-    title : str — заголовок
-    color : str — цвет основной части столбца
+    y : list/array-like — общие значения (неотрицательные)
+    success : list/array-like — успешные значения (каждое <= соответствующего y)
+
+    Уточнения:
+    – success и y должны быть одной длины.
+    – Если success > y — график будет некорректен (логической проверки нет, не допускай мусор на вход).
+
+    Лучше не трогай:
+    title : str | None — заголовок
+    color : str — цвет «верхней» части столбца
     success_color : str — цвет успешной части
-    bgcolor : str — цвет фона
+    bgcolor : str — фон графика
     figsize : tuple — размер фигуры
+
+    Функция автоматически строит stacked-bar: success рисуется снизу,
+    остальная часть достраивается сверху. Подписи процентов стоят над успехом,
+    общий итог — над верхушкой столбца.
     """
     fig, ax = plt.subplots(figsize=figsize)
 
@@ -187,15 +222,28 @@ def norm_pie(
     label_fontsize=12
 ):
     """
-    Рисует красивую круговую диаграмму в стиле минимализма.
+    Рисует аккуратную круговую диаграмму по категориальным данным Series.
+    Отображает количество в каждой категории прямо в подписи сектора.
 
-    series : pandas.Series — данные (категориальные)
-    colors : list — список цветов для секторов (если None — берутся оттенки синего/фиолетового)
-    bgcolor : str — цвет фона
-    title : str — заголовок
-    figsize : tuple — размер графика
-    label_fontsize : int — размер шрифта для подписей
+    Must-Have:
+    series : pandas.Series — категориальные данные.
+              Будет взят value_counts(), порядок — по убыванию частот.
+
+    Уточнения:
+    – Значения должны быть сравнимыми/хешируемыми (обычный Series с категориальными или строками).
+    – Если категорий больше 6 и colors не задан — лишние просто не получат уникальный цвет.
+
+    Лучше не трогай:
+    colors : list | None — цвета для секторов (обрезаются по количеству категорий)
+    bgcolor : str — фон всего графика
+    title : str | None — заголовок
+    figsize : tuple — размер фигуры
+    label_fontsize : int — размер шрифта подписей
+
+    Функция сама формирует подписи вида "Категория (число)", равняет диаграмму в круг
+    и использует минималистичную палитру с белыми разделителями между секторами.
     """
+
     counts = series.value_counts()
     labels = [f"{cat} ({cnt})" for cat, cnt in zip(counts.index, counts.values)]
 
@@ -250,20 +298,42 @@ def norm_hist(
     outliers_text='Выбросы',
 ):
     """
-    Рисует гистограмму для Series.
+    Рисует гистограмму для числовых данных Series с опциональным выделением выбросов.
+    Может подписывать высоты столбцов и красить столбцы, попавшие под outliers_min / outliers_max.
 
-    series : pandas.Series — данные
-    bins : int — количество корзин
+    Must-Have:
+    series : pandas.Series — числовые данные.
+              Допускаются float/int, пропуски желательно заранее выкинуть.
+    title : str | None — заголовок
+
+    Выбросы (или просто выделить цветом):
+    outliers_min : numeric - ставишь минимальный порог, меньше которого будет считататься выбросом
+    outliers_max : numeric - ставишь максимальный порог, больше которого будет считататься выбросом
+    outliers_text : str | "Выбросы" - текст для легенды
+
+    Уточнения:
+    – bins управляет количеством столбцов (обычный параметр matplotlib).
+    – Выбросы определяются по границам корзин:
+      если столбце полносью ≤ outliers_min или ≥ outliers_max — корзина считается выбросной.
+    – Если заданы пороги и хоть один столбец попадает в условие — будет легенда.
+
+    Подписи значений:
+    podpisi : bool — подписывать числовое значение или нет
+
+    Лучше не трогай:
+    bins : int | 10 - кол-во столбцов
     color : str — цвет обычных столбцов
-    edgecolor : str — цвет границ столбцов
-    bgcolor : str — цвет фона
-    title : str — заголовок
+    outlier_color : str — цвет столбцов-выбросов
+    edgecolor : str — границы столбцов
+    bgcolor : str — фон
     figsize : tuple — размер графика
-    podpisi : bool - делать ли подписи над столбцами
-    outliers_min : float — все корзины ≤ этого значения будут выделены
-    outliers_max : float — все корзины ≥ этого значения будут выделены
-    outlier_color : str — цвет аутлаеров
+    outliers_min / outliers_max : float | None — пороги для определения выбросов
+    outliers_text : str — текст в легенде
+
+    Функция сама считает частоты, красит каждый столбец по условию,
+    ставит подписи только для count > 0 и добавляет легенду, если выбросы реально присутствуют.
     """
+
     fig, ax = plt.subplots(figsize=figsize)
 
     # Фон
@@ -459,18 +529,30 @@ def norm_scatter(
     size=50
 ):
     """
-    Рисует красивый scatter plot в минималистичном стиле.
+    Рисует минималистичный scatter plot.
+    Поддерживает как обычное рассеяние, так и цветовую группировку по категориям.
 
-    x : array-like — координаты X
-    y : array-like — координаты Y
-    c : array-like (опц.) — категории для окраски точек
-    colors : list — список цветов (по умолчанию оттенки синего/фиолетового)
-    bgcolor : str — цвет фона
-    title : str — заголовок
+    Must-Have:
+    x, y : array-like — координаты точек одинаковой длины.
+
+    Уточнения:
+    – Если c не задан, все точки одной краской.
+    – Если c задан, каждая категория получает свой цвет, подписи выводятся сбоку.
+    – categories приводятся к строкам, так что смешанные типы не ломают график.
+
+    Лучше не трогай:
+    colors : list | None — палитра (циклически используется при большем числе категорий)
+    bgcolor : str — фон графика
+    title : str | None — заголовок
+    fontweight : str — стиль надписи заголовка
     figsize : tuple — размер графика
     alpha : float — прозрачность точек
     size : int — размер точек
+
+    Функция автоматически раскрашивает категории, рисует числа объектов в каждой,
+    поддерживает равномерный минималистичный стиль и аккуратные подписи сбоку вместо стандартной легенды.
     """
+
     fig, ax = plt.subplots(figsize=figsize)
 
     # Фон
@@ -606,7 +688,7 @@ def _mask_upper_triangle_df(df: pd.DataFrame):
 def mixed_corr_heatmaps(
     df: pd.DataFrame,
     categorical_cols: Optional[List[str]] = None,
-    method_num: str = "pearson",
+    method_num: str = "mixed",
     decimals: int = 2,
     figsize_each: tuple = (6,6),
     empty_cell_color: str = "#EEDDFF",
@@ -615,6 +697,9 @@ def mixed_corr_heatmaps(
     """
     Построение трех heatmap'ов: числовые×числовые (симметрично, маскируем сверху),
     категориальные×категориальные (симметрично, маскируем сверху), и числовые×категориальные (полная матрица).
+
+    method_num - 'mixed' or 'pearson' or 'spearman'. used mixed
+
     Оформление: фон #F5F5F5, ноль — чуть темнее фона, +1/-1 — фиолетовый
     Маленькие промежутки между ячейками; лишние линии и сетки убраны.
     """
@@ -638,7 +723,16 @@ def mixed_corr_heatmaps(
                     v1, spearman_p = spearmanr(df[i], df[j], nan_policy='omit')
                     # Пирсон
                     v2, pearson_p = pearsonr(df[i], df[j])
-                    corr_num.loc[i, j] = v1 if abs(v1) > abs(v2) else v2
+                    if method_num == "mixed":
+                        corr_num.loc[i, j] = v1 if abs(v1) > abs(v2) else v2
+                    elif method_num == "pearson":
+                        corr_num.loc[i, j] = v2
+                    elif method_num == "spearman":
+                        corr_num.loc[i, j] = v1
+                    else:
+                        print("Warning: Wrong method_num. must be 'mixed' or 'pearson' or 'spearman'. used mixed")
+                        corr_num.loc[i, j] = v1 if abs(v1) > abs(v2) else v2
+
     else:
         corr_num = pd.DataFrame(index=[], columns=[])
 
