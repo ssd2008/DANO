@@ -36,7 +36,7 @@ def ztest(counts, nobs): # counts = кол-во успехов, nobs - разм�
     print("z =", z_stat, "p-value =", p_value)
     return z_stat, p_value
 
-def print_correlations(x, y):
+def print_correlations(x, y, title=""):
     # Спирмен
     spearman_corr, spearman_p = spearmanr(x, y, nan_policy='omit')
     # Пирсон
@@ -44,6 +44,7 @@ def print_correlations(x, y):
 
     print(f"Корреляция Спирмена: {spearman_corr:.2f}, p-value = {spearman_p:.4f}")
     print(f"Корреляция Пирсона: {pearson_corr:.2f}, p-value = {pearson_p:.4f}")
+    graphics.norm_scatter(x, y, title=title)
 
 
 def normal_means(x):
@@ -62,7 +63,7 @@ def equal_var(*s):
     return p_levene
 
 
-def compare_mean(df, num_var, cat_var):
+def compare_mean(df, num_var, cat_var, title=""):
     groups_count = df[cat_var].nunique()
     series_list = [df[df[cat_var] == g][num_var] for g in df[cat_var].unique()]
     test_type = 'parametric'
@@ -119,11 +120,12 @@ def compare_mean(df, num_var, cat_var):
         else:
             agg = 'median'
         agg_values = df.groupby(cat_var)[num_var].agg(agg)
+        title = f"{agg} {num_var} по {cat_var}" if title == "" else title
         graphics.plot_bar_chart(agg_values.index, agg_values.values, title=f"{agg} {num_var} по {cat_var}")
     else:
         print("Средние статистически значимо НЕ отличаются")
 
-def chi_square_test(df, col1, col2, correction=False):
+def chi_square_test(df, col1, col2, correction=False, title=""):
     """
     χ²-тест независимости для двух категориальных переменных.
 
@@ -151,7 +153,7 @@ def chi_square_test(df, col1, col2, correction=False):
     print(f"χ² = {chi2:.4f}, p-value = {p:.4f}, df = {dof}")
     if p <= 0.05:
         print("Связь между переменными статистически значима.")
-        graphics.plot_heatmap(contingency_table, title="елки иголки")
+        graphics.plot_heatmap(contingency_table, title=title)
 
     else:
         print("Нет статистически значимой связи между переменными.")
