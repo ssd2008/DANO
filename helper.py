@@ -2,36 +2,20 @@ import time
 
 # Все библиотеки
 
-import numpy as np
 import pandas as pd
-import scipy.stats as stats
-from scipy.stats import ttest_ind, levene, mannwhitneyu,shapiro, \
-    f_oneway, kruskal, chi2_contingency, fisher_exact
-from statsmodels.stats.multicomp import pairwise_tukeyhsd
-import scikit_posthocs as sp
-import statsmodels.api as sm
-from statsmodels.stats.outliers_influence import variance_inflation_factor
-from statsmodels.stats.diagnostic import het_breuschpagan
-from sklearn.metrics import roc_auc_score, roc_curve
 import matplotlib.pyplot as plt
-import seaborn as sns
-import missingno as msno
-import pingouin as pg
-import sys
-import os
-from ydata_profiling import ProfileReport
-from matplotlib import rcParams
-from matplotlib import font_manager as fm
 import matplotlib as mpl
 import warnings
 
 mpl.rcParams['font.family'] = 'HSE Sans'
 plt.rcParams['figure.dpi'] = 300
 
-warnings.filterwarnings('ignore')
+def __info__():
+    text = ("Небольшой хэлпер.\n\nФунки:\n- series_to_nparray - делает series -> series list\n - series_to_list\n"
+            " - filter_by_datetime_range - берет нужную часть df по ограничениям по дате\n - one_hot_encode\n"
+            " - fit_predict_logistic - логрега\n - fit_predict_linear - линрега\n\nДля подробной инфы по функе - func.__doc__")
+    print(text)
 
-import graphics
-import tests
 
 
 def series_to_nparray(series):
@@ -55,7 +39,7 @@ def filter_by_datetime_range(df, datetime_col, time_min="", time_max=""):
     t_min = pd.to_datetime(time_min, dayfirst=True, errors='coerce') if time_min else None
     t_max = pd.to_datetime(time_max, dayfirst=True, errors='coerce') if time_max else None
 
-    mask = pd.Series([True] * len(df))
+    mask = pd.Series([True] * len(df), index=df.index)
 
     if t_min is not None:
         mask &= (df[datetime_col] >= t_min)
@@ -134,8 +118,8 @@ def _compute_vif(X: pd.DataFrame) -> pd.DataFrame:
 
 def fit_predict_logistic(
     learn: pd.DataFrame,
-    predict: pd.DataFrame,
     target: str,
+    predict: pd.DataFrame | None = None,
     return_proba: bool = False,
     thresh: float = 0.5,
     plot: bool = True,
@@ -165,11 +149,13 @@ def fit_predict_logistic(
 
     X_train = learn.drop(columns=[target])
     y_train = learn[target].astype(int)
-    X_pred = predict.copy()
+    if predict is not None:
+        X_pred = predict.copy()
 
     # добавляем константу (intercept)
     X_train_c = add_constant(X_train, has_constant='add')
-    X_pred_c = add_constant(X_pred, has_constant='add')
+    if predict is not None:
+        X_pred_c = add_constant(X_pred, has_constant='add')
 
     # --- попытка подогнать statsmodels Logit
     sm_result = None
@@ -188,7 +174,8 @@ def fit_predict_logistic(
         clf = LogisticRegression(max_iter=2000)
         clf.fit(X_train.values, y_train.values)
         proba_train = clf.predict_proba(X_train.values)[:, 1]
-        proba_pred = clf.predict_proba(X_pred.values)[:, 1]
+        if predict is not None:
+            proba_pred = clf.predict_proba(X_pred.values)[:, 1]
 
         # коэффициенты в sklearn
         try:
@@ -198,7 +185,8 @@ def fit_predict_logistic(
         pvalues = pd.Series([np.nan] * len(coef), index=coef.index)
     else:
         proba_train = sm_result.predict(X_train_c)
-        proba_pred = sm_result.predict(X_pred_c)
+        if predict is not None:
+            proba_pred = sm_result.predict(X_pred_c)
         coef = sm_result.params
         pvalues = sm_result.pvalues
 
@@ -262,18 +250,18 @@ def fit_predict_logistic(
         except Exception as e:
             warnings.warn(f"Не удалось построить ROC: {e}")
 
-    # --- предсказание для predict
-    if return_proba:
-        return pd.Series(proba_pred, index=predict.index)
-    else:
-        pred_labels = (proba_pred >= thresh).astype(int)
-        return pd.Series(pred_labels, index=predict.index)
+    if predict is not None:
+        if return_proba:
+            return pd.Series(proba_pred, index=predict.index)
+        else:
+            pred_labels = (proba_pred >= thresh).astype(int)
+            return pd.Series(pred_labels, index=predict.index)
 
 
 def fit_predict_linear(
     learn: pd.DataFrame,
-    predict: pd.DataFrame,
     target: str,
+    predict: pd.DataFrame | None = None,
     return_residuals: bool = False,
     plot: bool = True,
 ) -> pd.Series:
@@ -296,10 +284,12 @@ def fit_predict_linear(
 
     X_train = learn.drop(columns=[target])
     y_train = learn[target].astype(float)
-    X_pred = predict.copy()
+    if predict is not None:
+        X_pred = predict.copy()
 
     X_train_c = add_constant(X_train, has_constant='add')
-    X_pred_c = add_constant(X_pred, has_constant='add')
+    if predict is not None:
+        X_pred_c = add_constant(X_pred, has_constant='add')
 
     model = sm.OLS(y_train, X_train_c)
     res = model.fit()
@@ -370,11 +360,12 @@ def fit_predict_linear(
             warnings.warn(f"Не удалось построить diagnostic plots: {e}")
 
     # предсказание для predict
-    y_pred = res.predict(X_pred_c)
-    preds = pd.Series(y_pred, index=predict.index)
+    if predict is not None:
+        y_pred = res.predict(X_pred_c)
+        preds = pd.Series(y_pred, index=predict.index)
 
-    if return_residuals:
-        # если пользователь хочет residuals — возвращаем их в виде Series с индексом train
-        return preds, pd.Series(residuals, index=learn.index)
-    else:
-        return preds
+        if return_residuals:
+            # если пользователь хочет residuals — возвращаем их в виде Series с индексом train
+            return preds, pd.Series(residuals, index=learn.index)
+        else:
+            return preds
