@@ -1,6 +1,6 @@
 # ДАНО 2024: актуальный вид кредитования клиента
 
-Архивная ветка `codex/dano2024` в `Dano_hackatons`.
+Архивная ветка `codex/dano2024` в `DANO`.
 
 Источник: [ssd2008/dano2024](https://github.com/ssd2008/dano2024), ветка `master`, коммит `e6fe24ce8a2835f136679dcc9299985eb0d0efe9`. Дата переноса: 2026-10-22.
 
@@ -12,4 +12,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
