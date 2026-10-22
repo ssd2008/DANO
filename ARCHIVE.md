@@ -1,6 +1,6 @@
 # Москва 2025
 
-Архивная ветка `codex/MSK25` в `Dano_hackatons`.
+Архивная ветка `codex/MSK25` в `DANO`.
 
 Источник: [ssd2008/MSK25](https://github.com/ssd2008/MSK25), ветка `main`, коммит `067c8775df0c6709b832b92a17d98bbdaf67cd71`. Дата переноса: 2026-10-22.
 
@@ -13,4 +13,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
