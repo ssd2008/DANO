@@ -1,6 +1,6 @@
 # Санкт-Петербург / ИТМО 2025
 
-Архивная ветка `codex/SPB25_ITMO` в `Dano_hackatons`.
+Архивная ветка `codex/SPB25_ITMO` в `DANO`.
 
 Источник: [ssd2008/SPB25_ITMO](https://github.com/ssd2008/SPB25_ITMO), ветка `main`, коммит `9579f0d235271b411d3c1f7dafe16e3d1d5c78fa`. Дата переноса: 2026-10-22.
 
@@ -13,4 +13,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
