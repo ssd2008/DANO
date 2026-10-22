@@ -1,6 +1,6 @@
 # ДАНО 2024: звонки, кредиты и matching
 
-Архивная ветка `codex/DANO24` в `Dano_hackatons`.
+Архивная ветка `codex/DANO24` в `DANO`.
 
 Источник: [ssd2008/DANO24](https://github.com/ssd2008/DANO24), ветка `master`, коммит `695205367cc22818457cd0ce06cb8c19eec96699`. Дата переноса: 2026-10-22.
 
@@ -13,4 +13,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
