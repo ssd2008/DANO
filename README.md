@@ -1,6 +1,6 @@
 # Нижний Новгород 2025
 
-Архивная ветка `codex/NN25` в `Dano_hackatons`.
+Архивная ветка `codex/NN25` в `DANO`.
 
 Источник: [ssd2008/NN25](https://github.com/ssd2008/NN25), ветка `master`, коммит `89acc6e958a0bb4047e8fd365a763a4b4173dd09`. Дата переноса: 2026-10-22.
 
@@ -13,4 +13,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
