@@ -1,6 +1,6 @@
 # Санкт-Петербург 2024
 
-Архивная ветка `codex/spb2024` в `Dano_hackatons`.
+Архивная ветка `codex/spb2024` в `DANO`.
 
 Источник: [ssd2008/spb2024](https://github.com/ssd2008/spb2024), ветка `master`, коммит `122c9ece8382c776ca7cdcefcec50b1ad98bbf61`. Дата переноса: 2026-10-22.
 
@@ -13,4 +13,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
