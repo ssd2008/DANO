@@ -1,0 +1,298 @@
+{
+  "date": "2026-10-22",
+  "owner": "ssd2008",
+  "repository": "Dano_hackatons",
+  "private": true,
+  "sources": [
+    {
+      "repository": "dano2024",
+      "title": "ДАНО 2024: актуальный вид кредитования клиента",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/dano2024",
+      "source_default_branch": "master",
+      "source_head": "e6fe24ce8a2835f136679dcc9299985eb0d0efe9",
+      "destination_branch": "codex/dano2024",
+      "destination_head": "330b296dcd9ba758237b0e813cccc6dd07cf9732",
+      "source_files": 5,
+      "branches": [
+        {
+          "source_ref": "refs/heads/master",
+          "source_sha": "e6fe24ce8a2835f136679dcc9299985eb0d0efe9",
+          "destination_branch": "codex/dano2024"
+        }
+      ],
+      "tags": [],
+      "presentations": [
+        "презентация.pdf"
+      ],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "perm2024",
+      "title": "Пермь 2024: факторы победы игрока",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/perm2024",
+      "source_default_branch": "master",
+      "source_head": "5e4908b771064f41a9bf97de89d0726b283f3b54",
+      "destination_branch": "codex/perm2024",
+      "destination_head": "d8d205acae47bc05927470e94d84c0a8f3f5a639",
+      "source_files": 6,
+      "branches": [
+        {
+          "source_ref": "refs/heads/master",
+          "source_sha": "5e4908b771064f41a9bf97de89d0726b283f3b54",
+          "destination_branch": "codex/perm2024"
+        }
+      ],
+      "tags": [],
+      "presentations": [
+        "многохностный.pdf"
+      ],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "ekb2024",
+      "title": "Екатеринбург 2024",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/ekb2024",
+      "source_default_branch": "master",
+      "source_head": "f7ddb0d7083b95807e770ee2f27194552a6cc711",
+      "destination_branch": "codex/ekb2024",
+      "destination_head": "59eeb05ae4a2787a806d5d518d412a5e31f54ef2",
+      "source_files": 4,
+      "branches": [
+        {
+          "source_ref": "refs/heads/master",
+          "source_sha": "f7ddb0d7083b95807e770ee2f27194552a6cc711",
+          "destination_branch": "codex/ekb2024"
+        }
+      ],
+      "tags": [],
+      "presentations": [
+        "Blue Minimalist Pitch Deck.pdf"
+      ],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "nn2024",
+      "title": "Нижний Новгород 2024",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/nn2024",
+      "source_default_branch": "master",
+      "source_head": "5a6a4f6bcb44576f3eec36f33ea4d73bfe12d362",
+      "destination_branch": "codex/nn2024",
+      "destination_head": "a40b9b7e0342c287553280e2b32b1c936744b829",
+      "source_files": 2,
+      "branches": [
+        {
+          "source_ref": "refs/heads/master",
+          "source_sha": "5a6a4f6bcb44576f3eec36f33ea4d73bfe12d362",
+          "destination_branch": "codex/nn2024"
+        }
+      ],
+      "tags": [],
+      "presentations": [],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "spb2024",
+      "title": "Санкт-Петербург 2024",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/spb2024",
+      "source_default_branch": "master",
+      "source_head": "122c9ece8382c776ca7cdcefcec50b1ad98bbf61",
+      "destination_branch": "codex/spb2024",
+      "destination_head": "3a5e8fa5c9ae06f24e62e213b8494c426a4427fc",
+      "source_files": 2,
+      "branches": [
+        {
+          "source_ref": "refs/heads/master",
+          "source_sha": "122c9ece8382c776ca7cdcefcec50b1ad98bbf61",
+          "destination_branch": "codex/spb2024"
+        }
+      ],
+      "tags": [],
+      "presentations": [],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "DANO24",
+      "title": "ДАНО 2024: звонки, кредиты и matching",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/DANO24",
+      "source_default_branch": "master",
+      "source_head": "695205367cc22818457cd0ce06cb8c19eec96699",
+      "destination_branch": "codex/DANO24",
+      "destination_head": "39e02da68571f2ff72c1c86878cecb7b58df320e",
+      "source_files": 9,
+      "branches": [
+        {
+          "source_ref": "refs/heads/master",
+          "source_sha": "695205367cc22818457cd0ce06cb8c19eec96699",
+          "destination_branch": "codex/DANO24"
+        }
+      ],
+      "tags": [],
+      "presentations": [],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "MSK25",
+      "title": "Москва 2025",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/MSK25",
+      "source_default_branch": "main",
+      "source_head": "067c8775df0c6709b832b92a17d98bbdaf67cd71",
+      "destination_branch": "codex/MSK25",
+      "destination_head": "4ddc661c67e48ed8c3925993296f8dc499d4d98b",
+      "source_files": 7,
+      "branches": [
+        {
+          "source_ref": "refs/heads/main",
+          "source_sha": "067c8775df0c6709b832b92a17d98bbdaf67cd71",
+          "destination_branch": "codex/MSK25"
+        }
+      ],
+      "tags": [],
+      "presentations": [],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "SPB25_ITMO",
+      "title": "Санкт-Петербург / ИТМО 2025",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/SPB25_ITMO",
+      "source_default_branch": "main",
+      "source_head": "9579f0d235271b411d3c1f7dafe16e3d1d5c78fa",
+      "destination_branch": "codex/SPB25_ITMO",
+      "destination_head": "b9a86122298214e171fda4ee938d4870972e8470",
+      "source_files": 9,
+      "branches": [
+        {
+          "source_ref": "refs/heads/main",
+          "source_sha": "9579f0d235271b411d3c1f7dafe16e3d1d5c78fa",
+          "destination_branch": "codex/SPB25_ITMO"
+        }
+      ],
+      "tags": [],
+      "presentations": [],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "EKB25",
+      "title": "Екатеринбург 2025",
+      "source_private": true,
+      "source_url": "https://github.com/ssd2008/EKB25",
+      "source_default_branch": "main",
+      "source_head": "194de844c2cce360e0b97619d4080a5bb20ebfc5",
+      "destination_branch": "codex/EKB25",
+      "destination_head": "cb6938c225b72f6f20ad30bff98bc3aa6c703d9e",
+      "source_files": 13,
+      "branches": [
+        {
+          "source_ref": "refs/heads/main",
+          "source_sha": "194de844c2cce360e0b97619d4080a5bb20ebfc5",
+          "destination_branch": "codex/EKB25"
+        }
+      ],
+      "tags": [],
+      "presentations": [],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "NN25",
+      "title": "Нижний Новгород 2025",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/NN25",
+      "source_default_branch": "master",
+      "source_head": "89acc6e958a0bb4047e8fd365a763a4b4173dd09",
+      "destination_branch": "codex/NN25",
+      "destination_head": "a55f8af8388942831d31488b6498c25ca44deb66",
+      "source_files": 2,
+      "branches": [
+        {
+          "source_ref": "refs/heads/master",
+          "source_sha": "89acc6e958a0bb4047e8fd365a763a4b4173dd09",
+          "destination_branch": "codex/NN25"
+        }
+      ],
+      "tags": [],
+      "presentations": [],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "dano25",
+      "title": "ДАНО 2025: анализ ДТП",
+      "source_private": false,
+      "source_url": "https://github.com/ssd2008/dano25",
+      "source_default_branch": "main",
+      "source_head": "5b1a105b06c6306537f01225fc00c3c5601369bc",
+      "destination_branch": "codex/dano25",
+      "destination_head": "bf54f01aa71b3d8a92b73571b5f24fce60bd8a4d",
+      "source_files": 4,
+      "branches": [
+        {
+          "source_ref": "refs/heads/main",
+          "source_sha": "5b1a105b06c6306537f01225fc00c3c5601369bc",
+          "destination_branch": "codex/dano25"
+        }
+      ],
+      "tags": [],
+      "presentations": [
+        "presentations/DANO_9.pdf"
+      ],
+      "local_additions": [
+        {
+          "path": "presentations/DANO_9.pdf",
+          "sha256": "e225db36a1695dc2578cac0d2e509e981dd3f215c383c92002ee739f94d4059e",
+          "source": "local DANO_9.pdf (presentation found during inventory)"
+        }
+      ],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    },
+    {
+      "repository": "DANO_base",
+      "title": "Общая база: статистика, обработка данных и визуализация",
+      "source_private": true,
+      "source_url": "https://github.com/ssd2008/DANO_base",
+      "source_default_branch": "main",
+      "source_head": "7cb2b7b13627f4d5953b2398e1a795803b94761c",
+      "destination_branch": "codex/DANO_base",
+      "destination_head": "58a0285350505e62ceda96032a3ba27597a80ad6",
+      "source_files": 17,
+      "branches": [
+        {
+          "source_ref": "refs/heads/main",
+          "source_sha": "7cb2b7b13627f4d5953b2398e1a795803b94761c",
+          "destination_branch": "codex/DANO_base"
+        }
+      ],
+      "tags": [],
+      "presentations": [],
+      "local_additions": [],
+      "original_files_byte_identical": true,
+      "full_history_preserved": true
+    }
+  ]
+}
