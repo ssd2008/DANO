@@ -1,6 +1,6 @@
 # Нижний Новгород 2024
 
-Архивная ветка `codex/nn2024` в `Dano_hackatons`.
+Архивная ветка `codex/nn2024` в `DANO`.
 
 Источник: [ssd2008/nn2024](https://github.com/ssd2008/nn2024), ветка `master`, коммит `5a6a4f6bcb44576f3eec36f33ea4d73bfe12d362`. Дата переноса: 2026-10-22.
 
@@ -13,4 +13,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
