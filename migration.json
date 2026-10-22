@@ -1,8 +1,8 @@
 {
   "date": "2026-10-22",
   "owner": "ssd2008",
-  "repository": "Dano_hackatons",
-  "private": true,
+  "repository": "DANO",
+  "private": false,
   "sources": [
     {
       "repository": "dano2024",
@@ -12,7 +12,7 @@
       "source_default_branch": "master",
       "source_head": "e6fe24ce8a2835f136679dcc9299985eb0d0efe9",
       "destination_branch": "codex/dano2024",
-      "destination_head": "330b296dcd9ba758237b0e813cccc6dd07cf9732",
+      "destination_head": "c9c17f88f7f322710f9e758f388bc0c32b19f414",
       "source_files": 5,
       "branches": [
         {
@@ -37,7 +37,7 @@
       "source_default_branch": "master",
       "source_head": "5e4908b771064f41a9bf97de89d0726b283f3b54",
       "destination_branch": "codex/perm2024",
-      "destination_head": "d8d205acae47bc05927470e94d84c0a8f3f5a639",
+      "destination_head": "41c17ba8f1d1d8e6d8623fc70eed2b85d157f75c",
       "source_files": 6,
       "branches": [
         {
@@ -62,7 +62,7 @@
       "source_default_branch": "master",
       "source_head": "f7ddb0d7083b95807e770ee2f27194552a6cc711",
       "destination_branch": "codex/ekb2024",
-      "destination_head": "59eeb05ae4a2787a806d5d518d412a5e31f54ef2",
+      "destination_head": "4f6cf55918f3451bb309e34faefd4fcb2bf3013a",
       "source_files": 4,
       "branches": [
         {
@@ -87,7 +87,7 @@
       "source_default_branch": "master",
       "source_head": "5a6a4f6bcb44576f3eec36f33ea4d73bfe12d362",
       "destination_branch": "codex/nn2024",
-      "destination_head": "a40b9b7e0342c287553280e2b32b1c936744b829",
+      "destination_head": "35ca584accc5861e184550d5412f45c99cc3e659",
       "source_files": 2,
       "branches": [
         {
@@ -110,7 +110,7 @@
       "source_default_branch": "master",
       "source_head": "122c9ece8382c776ca7cdcefcec50b1ad98bbf61",
       "destination_branch": "codex/spb2024",
-      "destination_head": "3a5e8fa5c9ae06f24e62e213b8494c426a4427fc",
+      "destination_head": "3523163c4a92d3993cb20b972a2742555fe886a2",
       "source_files": 2,
       "branches": [
         {
@@ -133,7 +133,7 @@
       "source_default_branch": "master",
       "source_head": "695205367cc22818457cd0ce06cb8c19eec96699",
       "destination_branch": "codex/DANO24",
-      "destination_head": "39e02da68571f2ff72c1c86878cecb7b58df320e",
+      "destination_head": "1a41f7527767c79f7c6e6e5b438a5e03e658baf0",
       "source_files": 9,
       "branches": [
         {
@@ -156,7 +156,7 @@
       "source_default_branch": "main",
       "source_head": "067c8775df0c6709b832b92a17d98bbdaf67cd71",
       "destination_branch": "codex/MSK25",
-      "destination_head": "4ddc661c67e48ed8c3925993296f8dc499d4d98b",
+      "destination_head": "745b1ac869a4e53ff2918080f945bba71206800c",
       "source_files": 7,
       "branches": [
         {
@@ -179,7 +179,7 @@
       "source_default_branch": "main",
       "source_head": "9579f0d235271b411d3c1f7dafe16e3d1d5c78fa",
       "destination_branch": "codex/SPB25_ITMO",
-      "destination_head": "b9a86122298214e171fda4ee938d4870972e8470",
+      "destination_head": "534f869e6017ca980d70c8a1a305286da9edd92b",
       "source_files": 9,
       "branches": [
         {
@@ -202,7 +202,7 @@
       "source_default_branch": "main",
       "source_head": "194de844c2cce360e0b97619d4080a5bb20ebfc5",
       "destination_branch": "codex/EKB25",
-      "destination_head": "cb6938c225b72f6f20ad30bff98bc3aa6c703d9e",
+      "destination_head": "6db66e3509375de40735ce4a0b9773825d96407b",
       "source_files": 13,
       "branches": [
         {
@@ -225,7 +225,7 @@
       "source_default_branch": "master",
       "source_head": "89acc6e958a0bb4047e8fd365a763a4b4173dd09",
       "destination_branch": "codex/NN25",
-      "destination_head": "a55f8af8388942831d31488b6498c25ca44deb66",
+      "destination_head": "b7dffad3aa37aa9ef1e2d4c0a61a5f30d5b44bf3",
       "source_files": 2,
       "branches": [
         {
@@ -248,7 +248,7 @@
       "source_default_branch": "main",
       "source_head": "5b1a105b06c6306537f01225fc00c3c5601369bc",
       "destination_branch": "codex/dano25",
-      "destination_head": "bf54f01aa71b3d8a92b73571b5f24fce60bd8a4d",
+      "destination_head": "fb41c228efe708c4c51d22c1c317296fd1c37296",
       "source_files": 4,
       "branches": [
         {
@@ -279,7 +279,7 @@
       "source_default_branch": "main",
       "source_head": "7cb2b7b13627f4d5953b2398e1a795803b94761c",
       "destination_branch": "codex/DANO_base",
-      "destination_head": "1dcca640c8644f649b82dc2ec3bb2c4e2951c273",
+      "destination_head": "baabb547ebd80989e9cf70b383636bbe6414cbbf",
       "source_files": 17,
       "branches": [
         {
@@ -294,5 +294,6 @@
       "original_files_byte_identical": true,
       "full_history_preserved": true
     }
-  ]
+  ],
+  "renamed": "2026-10-23"
 }
