@@ -1,6 +1,6 @@
 # Общая база: статистика, обработка данных и визуализация
 
-Архивная ветка `codex/DANO_base` в `Dano_hackatons`.
+Архивная ветка `codex/DANO_base` в `DANO`.
 
 Источник: [ssd2008/DANO_base](https://github.com/ssd2008/DANO_base), ветка `main`, коммит `7cb2b7b13627f4d5953b2398e1a795803b94761c`. Дата переноса: 2026-10-22.
 
@@ -12,4 +12,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
