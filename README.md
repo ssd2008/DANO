@@ -1,6 +1,6 @@
 # Екатеринбург 2024
 
-Архивная ветка `codex/ekb2024` в `Dano_hackatons`.
+Архивная ветка `codex/ekb2024` в `DANO`.
 
 Источник: [ssd2008/ekb2024](https://github.com/ssd2008/ekb2024), ветка `master`, коммит `f7ddb0d7083b95807e770ee2f27194552a6cc711`. Дата переноса: 2026-10-22.
 
@@ -12,4 +12,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
