@@ -1,6 +1,6 @@
 # ДАНО 2025: анализ ДТП
 
-Архивная ветка `codex/dano25` в `Dano_hackatons`.
+Архивная ветка `codex/dano25` в `DANO`.
 
 Источник: [ssd2008/dano25](https://github.com/ssd2008/dano25), ветка `main`, коммит `5b1a105b06c6306537f01225fc00c3c5601369bc`. Дата переноса: 2026-10-22.
 
@@ -12,4 +12,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
