@@ -19,7 +19,7 @@
 | [EKB25](https://github.com/ssd2008/Dano_hackatons/tree/codex/EKB25) | Екатеринбург 2025 | `codex/EKB25` | **Нужно добавить** |
 | [NN25](https://github.com/ssd2008/Dano_hackatons/tree/codex/NN25) | Нижний Новгород 2025 | `codex/NN25` | **Нужно добавить** |
 | [dano25](https://github.com/ssd2008/Dano_hackatons/tree/codex/dano25) | ДАНО 2025: анализ ДТП | `codex/dano25` | Есть — найдена локально |
-| [DANO_base](https://github.com/ssd2008/Dano_hackatons/tree/codex/DANO_base) | Общая база: статистика, обработка данных и визуализация | `codex/DANO_base` | **Нужно добавить** |
+| [DANO_base](https://github.com/ssd2008/Dano_hackatons/tree/codex/DANO_base) | Общая база: статистика, обработка данных и визуализация | `codex/DANO_base` | Не требуется |
 
 ## Работа локально
 
