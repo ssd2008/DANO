@@ -1,6 +1,6 @@
 # Пермь 2024: факторы победы игрока
 
-Архивная ветка `codex/perm2024` в `Dano_hackatons`.
+Архивная ветка `codex/perm2024` в `DANO`.
 
 Источник: [ssd2008/perm2024](https://github.com/ssd2008/perm2024), ветка `master`, коммит `5e4908b771064f41a9bf97de89d0726b283f3b54`. Дата переноса: 2026-10-22.
 
@@ -12,4 +12,4 @@
 
 ## Навигация
 
-[Каталог коллекции](https://github.com/ssd2008/Dano_hackatons/tree/main).
+[Каталог коллекции](https://github.com/ssd2008/DANO/tree/main).
